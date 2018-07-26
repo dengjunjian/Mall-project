@@ -4,8 +4,12 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 // 引入index组件
 import index from './components/index.vue'
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 // 使用路由中间件
 Vue.use(VueRouter);
+Vue.use(ElementUI);
 
 // 注册路由规则
 const router = new VueRouter({

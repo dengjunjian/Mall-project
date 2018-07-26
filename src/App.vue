@@ -118,10 +118,32 @@
 </template>
 
 <script>
-export default {}; 
-</script>
+import $ from "jquery";
+export default {
 
-<style>
-  /* 标准的 css中导入其他css的语法 */
-  /* @import url('./assets/statics/site/css/style.css'); */
+    name:'app',
+    mounted:function(){
+      
+	$("#menu2 li a").wrapInner( '<span class="out"></span>' );
+	$("#menu2 li a").each(function() {
+		$( '<span class="over">' +  $(this).text() + '</span>' ).appendTo( this );
+	});
+
+	$("#menu2 li a").hover(function() {
+		$(".out",	this).stop().animate({'top':	'48px'},	300); // move down - hide
+		$(".over",	this).stop().animate({'top':	'0px'},		300); // move down - show
+
+	}, function() {
+		$(".out",	this).stop().animate({'top':	'0px'},		300); // move up - show
+		$(".over",	this).stop().animate({'top':	'-48px'},	300); // move up - hide
+	});
+
+    },
+}; 
+
+
+</script>
+<style scoped>
+    @import url('./assets/statics/hoverNav/css/style.css');
 </style>
+
